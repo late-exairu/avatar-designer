@@ -1,24 +1,32 @@
-import './style.css'
-import typescriptLogo from './typescript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.ts'
+import "./style.scss";
+import { setupCounter } from "./counter.ts";
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
+document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
   <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://www.typescriptlang.org/" target="_blank">
-      <img src="${typescriptLogo}" class="logo vanilla" alt="TypeScript logo" />
-    </a>
-    <h1>Vite + TypeScript</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
+    <h1>Avatar designer</h1>
+    <p>Upload your image or try one of the provided options:</p>
+    <img class="avatar" width="138px" height="138px" src="https://api.dicebear.com/7.x/big-ears-neutral/svg?seed=Precious" alt="Avatar" />
+    
+    <div class="buttons" id="default-avatars">
+      <button class="button">Image 1</button>
+      <button class="button">Image 2</button>
+      <button class="button">Image 3</button>
     </div>
-    <p class="read-the-docs">
-      Click on the Vite and TypeScript logos to learn more
-    </p>
-  </div>
-`
 
-setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)
+    <div class="option">
+      <input class="option__file" type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" />
+    </div>
+
+    <div class="option">
+      <label class="option__label" for="border-radius">Adjust border radius:</label>
+      <input class="option__range" type="range" id="border-radius" name="border-radius" min="0" max="50" value="0" />
+    </div>
+
+    <div class="option">
+      <label class="option__label" for="border-color">Choose border color:</label>
+      <input class="option__color" type="color" id="border-color" name="border-color" value="#e66465" />
+    </div>
+  </div>
+`;
+
+setupCounter(document.querySelector<HTMLButtonElement>("#counter")!);
