@@ -1,9 +1,12 @@
 {
+  "homepage": "https://late-exairu.github.io/avatar-designer",
   "name": "avatar-designer",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview"
@@ -14,6 +17,7 @@
     "vite": "^5.0.8"
   },
   "dependencies": {
+    "gh-pages": "^6.1.1",
     "lodash": "^4.17.21"
   }
 }
