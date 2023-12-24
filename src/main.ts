@@ -1,10 +1,11 @@
 import "./style.scss";
-import { setupCounter } from "./counter.ts";
+import setupBorderColor from "./borderColor.ts";
 
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
   <div>
     <h1>Avatar designer</h1>
     <p>Upload your image or try one of the provided options:</p>
+
     <img class="avatar" width="138px" height="138px" src="https://api.dicebear.com/7.x/big-ears-neutral/svg?seed=Precious" alt="Avatar" />
     
     <div class="buttons" id="default-avatars">
@@ -14,7 +15,7 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
     </div>
 
     <div class="option">
-      <input class="option__file" type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" />
+      <input class="option__file" type="file" id="avatar-image" name="avatar" accept="image/png, image/jpeg" />
     </div>
 
     <div class="option">
@@ -24,9 +25,9 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
 
     <div class="option">
       <label class="option__label" for="border-color">Choose border color:</label>
-      <input class="option__color" type="color" id="border-color" name="border-color" value="#e66465" />
+      <input class="option__color" type="color" id="border-color-input" name="border-color" value="#e66465" />
     </div>
   </div>
 `;
 
-setupCounter(document.querySelector<HTMLButtonElement>("#counter")!);
+setupBorderColor();
