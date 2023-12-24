@@ -46,8 +46,8 @@ h1 {
 .avatar {
   display: block;
   margin: 0 auto;
-  border: 5px solid #646cff;
-  border-radius: 25px;
+  border: 5px solid #e66465;
+  border-radius: 25%;
 }
 
 .option {
@@ -64,10 +64,17 @@ h1 {
   &__file {
     font-size: 1rem;
     color: #ffffff;
-    background: #646cff;
+    background: transparent;
+    color: #646cff;
+    border: 1px solid #646cff;
     cursor: pointer;
-    padding: 10px;
-    border-radius: 10px;
+    padding: 5px 10px;
+    border-radius: 4px;
+
+    &.active {
+      background: #535bf2;
+      color: #ffffff;
+    }
   }
 }
 
@@ -91,6 +98,11 @@ h1 {
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
+
+  &.active {
+    background: #535bf2;
+    color: #ffffff;
+  }
 }
 
 @media (prefers-color-scheme: light) {
