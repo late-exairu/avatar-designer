@@ -17,6 +17,7 @@ export default function setupControls() {
   ) as HTMLInputElement;
 
   const handleBorderColorChange = () => {
+    localStorage.setItem("borderColor", `${borderColorInput.value}`);
     avatar.style.borderColor = borderColorInput.value;
   };
 
@@ -38,8 +39,8 @@ export default function setupControls() {
   };
 
   const handleAvatarSizeChange = () => {
-    avatar.style.width = `${avatarSizeInput.value}px`;
-    avatar.style.height = `${avatarSizeInput.value}px`;
+    localStorage.setItem("avatarSize", `${avatarSizeInput.value}`);
+    setAvatarSize(avatarSizeInput.value);
   };
 
   const handleDefaultAvatarChange = (e: MouseEvent) => {
@@ -48,6 +49,27 @@ export default function setupControls() {
     const target = e.currentTarget as HTMLElement;
     avatar.src = target.dataset.defaultImage!;
     target.classList.add("active");
+  };
+
+  const setAvatarSize = (size: string) => {
+    avatar.style.width = `${size}px`;
+    avatar.style.height = `${size}px`;
+  };
+
+  const initAvatarSize = () => {
+    const avatarSize = localStorage.getItem("avatarSize");
+    if (avatarSize) {
+      avatarSizeInput.value = avatarSize;
+      setAvatarSize(avatarSize);
+    }
+  };
+
+  const initBorderColor = () => {
+    const borderColor = localStorage.getItem("borderColor");
+    if (borderColor) {
+      borderColorInput.value = borderColor;
+      avatar.style.borderColor = borderColor;
+    }
   };
 
   const removeActiveClass = () => {
@@ -69,4 +91,7 @@ export default function setupControls() {
   defaultAvatars.forEach((button) => {
     button.addEventListener("click", handleDefaultAvatarChange);
   });
+
+  initAvatarSize();
+  initBorderColor();
 }
